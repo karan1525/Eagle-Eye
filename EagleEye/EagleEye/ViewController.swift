@@ -47,6 +47,17 @@ class ViewController: UIViewController {
         roundLabel.text = String(round)
     }
     
+    func startNewGame() {
+        score = 0
+        round = 0
+        startNewRound()
+    }
+    
+    @IBAction func startOver() {
+        startNewGame()
+        updateLabels()
+    }
+    
     @IBAction func showAction() {
         let difference = abs(targetValue - currentValue)
         var points: Int = 100 - difference
