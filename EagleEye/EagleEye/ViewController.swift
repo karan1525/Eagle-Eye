@@ -13,10 +13,12 @@ class ViewController: UIViewController {
     var currentValue: Int = 50
     var targetValue: Int = 50
     @IBOutlet weak var slider: UISlider! //always form a weak connection
+    @IBOutlet weak var targetLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         startNewRound()
+        updateLabels()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -33,6 +35,10 @@ class ViewController: UIViewController {
         slider.value = Float(currentValue)
     }
     
+    func updateLabels() {
+        targetLabel.text = String(targetValue)
+    }
+    
     @IBAction func showAction() {
         let message: String = "The value of the slider is: \(currentValue)" + "\nThe target value is: \(targetValue)"
         let alert = UIAlertController(title: "Hi there!",
@@ -46,6 +52,7 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
         startNewRound()
+        updateLabels()
     }
     
     @IBAction func sliderMoved(_ slider: UISlider) {
